@@ -12,4 +12,4 @@ def list_files_info(path="."):
             print("Size:", size)
             print("-------")
 
-list_files_info(".")            
+    list_files_info(".")            
