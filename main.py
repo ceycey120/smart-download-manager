@@ -1,4 +1,5 @@
 import os 
+import shutil
 
 def list_files_info(path="."):
     """print name, extension, and size for files in the given folder."""
@@ -12,4 +13,18 @@ def list_files_info(path="."):
             print("Size:", size)
             print("-------")
 
-    list_files_info(".")            
+def move_file(source, destination):
+
+    if not os.path.exists(destination):
+        os.makedirs(destination)
+        print(f"New destination folder {destination} created")
+
+    try:
+        shutil.move(source, destination)
+        print(f"Successfully moved file from {source} to {destination}")
+    except FileNotFoundError:
+        print(f"Error: File not found")
+    except PermissionError:
+        print(f"Error: Permission denied to move file.")
+    except  Exception as e:
+        print(f"Error: {e}")
